@@ -26,6 +26,8 @@ const AuthWithContext = withContext(Authenticated);
 const UserSignUpWithContext = withContext(UserSignUp);
 // Connect UserSignIn to context
 const UserSignInWithContext = withContext(UserSignIn);
+// Connect UserSignOut to context
+const UserSignOutWithContext = withContext(UserSignOut);
 
 export default () => (
   <Router>
@@ -35,9 +37,10 @@ export default () => (
       <Switch>
         <Route exact path="/" component={Public} />
         <PrivateRoute path="/authenticated" component={AuthWithContext} />
+        <PrivateRoute path="/settings" component={AuthWithContext} />
         <Route path="/signin" component={UserSignInWithContext} />
         <Route path="/signup" component={UserSignUpWithContext} />
-        <Route path="/signout" component={UserSignOut} />
+        <Route path="/signout" component={UserSignOutWithContext} />
         <Route component={NotFound} />
       </Switch>
     </div>
